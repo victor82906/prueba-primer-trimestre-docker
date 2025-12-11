@@ -1,7 +1,9 @@
 ## Tecnologias usadas en el despliegue
 
 PHP 8.2 con apache para la generacion de chistes y la gestion de la encuesta
+
 MYSQL 8.0 para la persistencia 
+
 nginx alpine como proxy intermedio
 
 
