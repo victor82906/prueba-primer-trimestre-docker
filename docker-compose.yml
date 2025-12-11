@@ -1,0 +1,45 @@
+services:
+  prueba_encuesta:
+      build:
+        context: ./db
+      container_name: prueba_encuesta
+
+  encuesta1:
+    build:
+      context: ./encuesta
+    container_name: encuesta1
+    volumes:
+      - ./encuesta:/var/www/html
+    # environment:
+    #   VIRTUAL_HOST: www.freedomforLinares.com
+
+  encuesta2:
+    build:
+      context: ./encuesta
+    container_name: encuesta2
+    volumes:
+      - ./encuesta:/var/www/html
+
+  encuesta3:
+    build:
+      context: ./encuesta
+    container_name: encuesta3
+    volumes:
+      - ./encuesta:/var/www/html
+
+  chiste:
+    build:
+      context: ./chiste
+    container_name: chiste
+    volumes:
+      - ./chiste:/var/www/html
+    # environment:
+    #   VIRTUAL_HOST: www.chiquito.com
+
+  prueba_proxy:
+    image: nginx:alpine
+    container_name: prueba_proxy
+    volumes:
+      - ./nginx.conf/nginx.proxy.conf:/etc/nginx/conf.d/z-overrides.conf
+    ports:
+      - 80:80
