@@ -9,24 +9,24 @@ nginx alpine como proxy intermedio
 
 ## Pasos que he seguido
 
-1. 
+* 
 Identifique que servicios necesitaba, al tener 2 diferentes dominios, (uno para la encuesta y otro para la generacion de chistes, los cuales he agregado a el fichero hosts de windows a la ip 127.0.0.1), he hecho un fichero php para cada uno.
 
 Para la persistencia de los votos de la encuesta, he creado una pequeña base de datos con un fichero init.sql.
 
 Y elegi nginx alpine para el proxy ya que lo habia usado anteriormente en clase y tenia un claro ejemplo de como aplicarlo
 
-2.
+* 
 He creado los archivos php, que con la practica anterior de de nginx la mayorida ha sido copiar y pegar, cambiando los datos de la conexion PDO y alguna cosa mas.
 
 Despues he hecho el init.sql, que crea una base de datos con una tabla donde guardo un atributo voto en texto.
 
-3. 
+* 
 Despues he creado los Dockerfile de los servicios php, que son los mismos para ambos por lo que realmente podria haber hecho solo uno.
 
 Y finalmente he hecho el Dockerfile de la base de datos, en la que copio el init.sql dentro del contenedor para que se cree la base de datos.
 
-4. 
+* 
 Ahora he creado el fichero docker-compose.yml para la orquestacion de los servicios.
 
 Como necesitaba 3 diferentes servicios para la encuesta, los he llamado encuesta1, encuesta2 y encuesta3, para luego en el fichero de configuracion de nginx unirlos y hacer el balanceo de carga.
@@ -35,7 +35,7 @@ Despues he realizado el servicio de los chistes, los dos servicios php los he cr
 
 El servicio de la base de datos que simplemente tiene contexto para su Dockerfile y por ultimo hago el servicio de nginx alpine, el cual le creo un volumen para su fichero de configuracion.
 
-5. 
+* 
 Por ultimo, para hacer el fichero de configuracion de nginx me he basado en el que hicimos un dia en clase para tener varios servicios en un solo dominio, y en upstream he puesto los servicios de encuesta y su balanceo de carga.
 
 
